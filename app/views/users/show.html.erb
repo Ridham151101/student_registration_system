@@ -1,0 +1,48 @@
+<h1 class="mb-4 text-center">User Details</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">User Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <strong>Name:</strong>
+            <p><%= @user.name %></p>
+          </div>
+
+          <div class="mb-3">
+            <strong>Email:</strong>
+            <p><%= @user.email %></p>
+          </div>
+
+          <div class="mb-3">
+            <strong>Date of Birth:</strong>
+            <p><%= @user.dob.strftime('%B %d, %Y') if @user.dob %></p>
+          </div>
+
+          <div class="mb-3">
+            <strong>Address:</strong>
+            <p><%= @user.address %></p>
+          </div>
+
+          <div class="mb-3">
+            <strong>Profile Photo:</strong>
+            <% if @user.photo.present? %>
+              <div>
+                <%= image_tag @user.photo, class: 'img-fluid rounded' %>
+              </div>
+            <% else %>
+              <p>No photo available.</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-footer text-end">
+          <%= link_to 'Edit User', edit_user_path(@user), class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

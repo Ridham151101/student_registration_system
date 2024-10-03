@@ -1,0 +1,61 @@
+<div class="container d-flex justify-content-center  min-vh-100">
+  <div class="col-md-6">
+    <h1 class="mb-4 text-center">Register New Student</h1>
+
+    <%= form_with(model: @user, url: student_registration_path, method: :post, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Please enter the student's name.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email, class: 'form-label' %>
+        <%= form.email_field :email, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :dob, class: 'form-label' %>
+        <%= form.date_select :dob, class: 'form-select', required: true %>
+        <div class="invalid-feedback">
+          Please select a date of birth.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :address, class: 'form-label' %>
+        <%= form.text_area :address, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Please enter the student's address.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :photo, class: 'form-label' %>
+        <%= form.file_field :photo, class: 'form-control' %>
+      </div>
+
+      <div class="d-grid gap-2">
+        <%= form.submit 'Register Student', class: 'btn btn-success btn-block' %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Back to Students List', users_path, class: 'btn btn-secondary mt-3' %>
+  </div>
+</div>

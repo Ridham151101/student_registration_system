@@ -1,0 +1,74 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore log files and temp files
+/log/*
+!/log/.keep
+/tmp
+/public/system
+/public/uploads
+
+# Ignore node modules and Yarn error logs
+/node_modules
+/yarn-error.log
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore secrets
+/config/secrets.yml.enc
+/config/credentials.yml.enc
+
+# Ignore database files
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/schema.rb
+
+# Ignore generated files
+/public/packs
+/public/packs-test
+/public/assets
+
+# Ignore Rails specific
+/public/404.html
+/public/422.html
+/public/500.html
+/public/favicon.ico
+/public/apple-touch-icon.png
+
+# Ignore IDE/editor specific files
+/.idea
+/.vscode
+*.swp
+*~
+
+# Ignore test files
+/test/tmp
+/test/fixtures/*.csv
+/test/fixtures/*.yml
+
+# Ignore vendor directory
+/vendor/bundle
+
+# Ignore specific OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore backup files
+*~
+*.bak
+*.old
+
+# Ignore local configuration
+/config/database.yml
+
+# Ignore storage files
+/storage/*
+!/storage/.keep
+
+# Ignore cache files
+/tmp/cache/*
+!/tmp/cache/.keep
+
+# Ignore action cable files
+/cable.yml

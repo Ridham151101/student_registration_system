@@ -1,0 +1,49 @@
+<h1 class="mb-4">Students List</h1>
+
+<div class="mb-3">
+  <%= link_to 'Register New Student', new_user_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Verified</th>
+      <th>Photo</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.varified ? 'Yes' : 'No' %></td>
+        <td>
+          <% if student.photo.attached? %>
+            <%= image_tag student.photo.variant(resize_to_limit: [100, 100]), class: 'img-thumbnail' %>
+          <% end %>
+        </td>
+        <td><%= student.address %></td>
+        <td>
+          <%= link_to 'Edit', edit_user_path(student), class: 'btn btn-warning btn-sm' %> 
+          <% unless student.varified %>
+            <%= button_to 'Verify', verify_student_user_path(student), method: :patch, class: 'btn btn-success btn-sm', data: { confirm: "Are you sure you want to verify this student?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="mt-5">Bulk Import Students</h2>
+<%= form_with url: import_users_path, local: true, multipart: true, class: 'mb-4' do |form| %>
+  <div class="mb-3">
+    <%= form.file_field :file, class: 'form-control' %>
+  </div>
+  <%= form.submit 'Import CSV', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Export Students to CSV', export_users_path(format: :csv), class: 'btn btn-secondary' %>

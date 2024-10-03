@@ -1,0 +1,11 @@
+<h1>New Student Registration</h1>
+<p>Dear Admin,</p>
+<p>A new student has registered on the platform:</p>
+<ul>
+  <li>Name: <%= @student.name %></li>
+  <li>Email: <%= @student.email %></li>
+  <li>Role: <%= @student.role %></li>
+  <li>Date of Birth: <%= @student.dob.strftime("%B %d, %Y") if @student.dob %></li>
+</ul>
+<p>Please review their details and take any necessary actions.</p>
+<p>Best regards,<br>Your Company Name</p>
